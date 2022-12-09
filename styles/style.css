@@ -1,0 +1,25 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+.products{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 70px;
+    margin-top: 4rem;
+}
+.products .card img{
+    width: 12rem;
+    height: 12rem;
+}
+h2{
+   text-align: center;
+   margin-top: 5rem;
+}
+body{
+    background-color: #e8e5dd;
+}
