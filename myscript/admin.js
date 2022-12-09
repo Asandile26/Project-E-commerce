@@ -71,8 +71,9 @@ let x = localStorage.setItem('phones',JSON.stringify(products));
 let y = localStorage.getItem('phones');
 // console.log(JSON.parse(y));
 function tableProduct() {
+    document.querySelector('#tbody').innerHTML = ''
     let phones = JSON.parse(localStorage.getItem('phones'))
-    products.forEach((item) => {
+    phones.forEach((item) => {
         document.querySelector('#tbody').innerHTML +=`
         <tr>
         <th scope="row">${item.id}</th>
@@ -90,18 +91,47 @@ function tableProduct() {
     
     
     function del(id) {
+        // console.log(id)
+        document.querySelector('#tbody').innerHTML =``
         document.querySelector('#del')
         let phones = JSON.parse(localStorage.getItem('phones'))
-        phones.splice(id,1)
-    localStorage.setItem('phones', JSON.stringify(phones))
+        phones.splice(id, 1)
+        // console.log(phones)
+        localStorage.setItem('phones', JSON.stringify(phones))
+        // console.table(JSON.parse(localStorage.phones))
+        tableProduct();
+        // console.table(phones)
     };
 
-del();
 
 //sorts
 function sort() {
+    document.querySelector('#tbody').innerHTML =``
+    let phones = JSON.parse(localStorage.getItem('sorted'))
     let sorted = products.sort((a, b) => (a.price > b.price) ? 1 : -1);
+    localStorage.setItem('phones', JSON.stringify(products))
     
-    console.table(sorted  );
-    
+    console.table(sorted);
+    tableProduct();
 }
+
+let updateBtn = document.querySelector('.btn')
+
+updateBtn.addEventListener('click', (e)=>{
+    e.preventDefault;
+    let id = document.querySelector('#id').value
+    let productName = document.querySelector('#productName').value
+    let color = document.querySelector('#color').value
+    let price = document.querySelector('#price').value
+    let Image = document.querySelector('#image').value
+
+    products.push(
+        id,
+        productName,
+        color,
+        price,
+        Image
+    )
+    localStorage.setItem('phones', JSON.stringify(products));
+    console.log(JSON.parse(localStorage.getItem('phones'))) ;
+})

@@ -1,5 +1,5 @@
-let list = JSON.parse(localStorage.getItem('list')) ?
-JSON.parse(localStorage.getItem('list')) : [
+let products = JSON.parse(localStorage.getItem('products')) ?
+JSON.parse(localStorage.getItem('products')) : [
     {
         id: 1,
         productName: "iPhone 13",
@@ -65,3 +65,18 @@ JSON.parse(localStorage.getItem('list')) : [
 
     },
 ];
+function topPhones(item) {
+    let phones = document.querySelector('#tafula')
+    phones.innerHTML =''
+    for ( let i = 0; i < DataTransfer.length; i++) {
+        let phonesRows = '<tr>
+        <th scope="row">${i.id}</th>
+        <td>${item.productName}</td>
+        <td>${item.color}</td>
+        <td>${item.price}</td>
+        <td><button onclick="edit()" id="edit">EDIT</button></td>
+        <td><button onclick="del(${item.id})" id="del">DEL</button></td>
+        '
+    }
+    
+}

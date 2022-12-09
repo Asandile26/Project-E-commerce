@@ -35,7 +35,8 @@
     <h1>Admin</h1>
     <button onclick="sort()" id="Sort">Sort</button>
 
-    <!-- Button trigger modal -->
+    <form>
+            <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary my-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Launch demo modal
 </button>
@@ -49,23 +50,27 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <label><input type="text" placeholder="Enter Id"> 
+        <label><input type="text" placeholder="Enter Id" id="id"> 
       </label> <br>
-      <label></h3><input type="text" for="" placeholder="Enter ProductName">
+      <label></h3><input type="text" for="" placeholder="Enter ProductName" id="ProductName">
       </label> <br>
-      <label><input type="text" placeholder="Enter Color"> 
+      <label><input type="text" placeholder="Enter Color" id="Color"> 
       </label><br>
-      <label><input type="text" placeholder="Enter Price"> 
+      <label><input type="text" placeholder="Enter Price" id="price"> 
+      </label><br>
+      <label><input type="url" placeholder="Enter Image URL" id="image"> 
       </label>
+      
        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="submit" onclick="updateBtn" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
 </div>
+    </form>
     <thead>
       <tr>
         <th scope="col">ID</th>
