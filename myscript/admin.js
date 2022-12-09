@@ -65,6 +65,7 @@ let products = JSON.parse(localStorage.getItem('products')) ?
         
     },
 ];
+console.log(products)
 
 document.querySelector('#tbody').innerHTML =``
 let x = localStorage.setItem('phones',JSON.stringify(products));
@@ -94,7 +95,7 @@ function tableProduct() {
         // console.log(id)
         document.querySelector('#tbody').innerHTML =``
         document.querySelector('#del')
-        let phones = JSON.parse(localStorage.getItem('phones'))
+        let phones = JSON.parse(localStorage.getItem('phones'));
         phones.splice(id, 1)
         // console.log(phones)
         localStorage.setItem('phones', JSON.stringify(phones))
@@ -107,31 +108,43 @@ function tableProduct() {
 //sorts
 function sort() {
     document.querySelector('#tbody').innerHTML =``
-    let phones = JSON.parse(localStorage.getItem('sorted'))
+    // let phones = JSON.parse(localStorage.getItem('sorted'))
     let sorted = products.sort((a, b) => (a.price > b.price) ? 1 : -1);
     localStorage.setItem('phones', JSON.stringify(products))
-    
-    console.table(sorted);
+    console.log(sorted);
     tableProduct();
 }
 
-let updateBtn = document.querySelector('.btn')
+let newPhone = function(id, productName, color, price, image){
+    this.id = id;
+    this.productName = productName;
+    this.color = color;
+    this.price = price;
+    this.image = image;
+}
+let updateBtn = document.querySelector('#btn')
 
-updateBtn.addEventListener('click', (e)=>{
-    e.preventDefault;
-    let id = document.querySelector('#id').value
-    let productName = document.querySelector('#productName').value
-    let color = document.querySelector('#color').value
-    let price = document.querySelector('#price').value
-    let Image = document.querySelector('#image').value
+updateBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    let id = document.querySelector('#id')
+    let productName = document.querySelector('#productName')
+    let color = document.querySelector('#color')
+    let price = document.querySelector('#price')
+    let image = document.querySelector('#image')
 
-    products.push(
-        id,
-        productName,
-        color,
-        price,
-        Image
-    )
+console.log(id.value);
+console.log(productName.value);
+console.log(color.value);
+console.log(price.value);
+console.log(image.value);
+
+console.log(products)
+    products.push({...new newPhone(id.value, productName.value, color.value, price.value, image.value)})
     localStorage.setItem('phones', JSON.stringify(products));
-    console.log(JSON.parse(localStorage.getItem('phones'))) ;
+    // updateBtn();
+    // tableProduct();
+
+
+console.log(products)
+tableProduct()
 })

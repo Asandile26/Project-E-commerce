@@ -65,3 +65,17 @@ JSON.parse(localStorage.getItem('list')) : [
 
     },
 ];
+let checkOut = [];
+
+function basket(items) {
+    phones.forEach((items) => {
+        document.querySelector('#tbody').innerHTML +=`
+        <tr>
+        <th scope="row">${items.id}</th>
+        <td>${items.productName}</td>
+        <td>${items.color}</td>
+        <td>${items.price}</td>
+      </tr>`
+    });
+    
+}
