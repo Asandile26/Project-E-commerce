@@ -1,5 +1,13 @@
 let products = JSON.parse(localStorage.getItem('products')) ?
     JSON.parse(localStorage.getItem('products')) : [
+     {
+        id: 0,
+        productName: "Hisense",
+        price: 2999,
+        color: "Blue",
+        Image: "https://i.postimg.cc/MGFxGWc6/h-e60.jpg"
+
+    },
     {
         id: 1,
         productName: "iPhone 13",
@@ -27,7 +35,7 @@ let products = JSON.parse(localStorage.getItem('products')) ?
     {
         id: 4,
         productName: "iPhone 13",
-        price: 15000,
+        price: 15999,
         color: "Black",
         Image: "https://i.postimg.cc/P51x3PLz/iphone-13-black.webp"
 
@@ -52,14 +60,14 @@ let products = JSON.parse(localStorage.getItem('products')) ?
     {
         id: 7,
         productName: "iPhone X",
-        price: 15000,
+        price: 15999,
         color: "all colors",
         Image: "https://i.postimg.cc/c1jwPtJV/x.webp"
     },
     {
         id: 8,
         productName: "Samsung galaxy S21",
-        price: 15000,
+        price: 15999,
         color: "Black",
         Image: "https://i.postimg.cc/y6GjHYjS/A21.jpg"
         
@@ -93,7 +101,7 @@ function tableProduct() {
     
     function del(id) {
         // console.log(id)
-        document.querySelector('#tbody').innerHTML =``
+        // document.querySelector('#tbody').innerHTML =``
         document.querySelector('#del')
         let phones = JSON.parse(localStorage.getItem('phones'));
         phones.splice(id, 1)
@@ -114,7 +122,7 @@ function sort() {
     console.log(sorted);
     tableProduct();
 }
-
+ 
 let newPhone = function(id, productName, color, price, image){
     this.id = id;
     this.productName = productName;
@@ -122,8 +130,9 @@ let newPhone = function(id, productName, color, price, image){
     this.price = price;
     this.image = image;
 }
-let updateBtn = document.querySelector('#btn')
 
+let updateBtn = document.querySelector('#save')
+ 
 updateBtn.addEventListener('click', (event) => {
     event.preventDefault();
     let id = document.querySelector('#id')
@@ -131,20 +140,20 @@ updateBtn.addEventListener('click', (event) => {
     let color = document.querySelector('#color')
     let price = document.querySelector('#price')
     let image = document.querySelector('#image')
-
+ 
 console.log(id.value);
 console.log(productName.value);
 console.log(color.value);
 console.log(price.value);
 console.log(image.value);
-
+ 
 console.log(products)
     products.push({...new newPhone(id.value, productName.value, color.value, price.value, image.value)})
     localStorage.setItem('phones', JSON.stringify(products));
     // updateBtn();
     // tableProduct();
-
-
+ 
+ 
 console.log(products)
 tableProduct()
 })

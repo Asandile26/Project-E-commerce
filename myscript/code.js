@@ -1,9 +1,17 @@
 let products = JSON.parse(localStorage.getItem('products')) ?
 JSON.parse(localStorage.getItem('products')) : [
     {
+        id: 0,
+        productName: "Hisense",
+        price: 2999,
+        color: "Blue",
+        Image: "https://i.postimg.cc/MGFxGWc6/h-e60.jpg"
+
+    },
+    {
         id: 1,
         productName: "iPhone 13",
-        price: 18999,
+        price: 14999,
         color: "Black",
         Image: "https://i.postimg.cc/mrW2fBx3/13-i-Phone.jpg"
 
@@ -26,8 +34,8 @@ JSON.parse(localStorage.getItem('products')) : [
     },
     {
         id: 4,
-        productName: "iPhone 13",
-        price: 15000,
+        productName: "iPhone 12",
+        price: 13999,
         color: "Black",
         Image: "https://i.postimg.cc/P51x3PLz/iphone-13-black.webp"
 
@@ -44,7 +52,7 @@ JSON.parse(localStorage.getItem('products')) : [
     {
         id: 6,
         productName: "iPhone 13-pro",
-        price: 15999,
+        price: 18999,
         color: "black",
         Image: "https://i.postimg.cc/P51x3PLz/iphone-13-black.webp"
 
@@ -52,20 +60,21 @@ JSON.parse(localStorage.getItem('products')) : [
     {
         id: 7,
         productName: "iPhone X",
-        price: 15000,
+        price: 15999,
         color: "all colors",
         Image: "https://i.postimg.cc/c1jwPtJV/x.webp"
     },
     {
         id: 8,
         productName: "Samsung galaxy S21",
-        price: 15000,
+        price: 15999,
         color: "Black",
         Image: "https://i.postimg.cc/y6GjHYjS/A21.jpg"
 
     },
 ];
-
+let x = localStorage.setItem('phones',JSON.stringify(products));
+let y = localStorage.getItem('phones');
     function displayProduct() {
         products.forEach((phones) => {
             document.querySelector('#products').innerHTML +=`
@@ -75,7 +84,7 @@ JSON.parse(localStorage.getItem('products')) : [
         <h5 class="card-title">Name: ${phones.productName}</h5>
         <p class="card-text">Color: ${phones.color}</p>
         <p class="card-text"><small class="text-muted">Price: R${phones.price}</small></p>
-        <a href="#" class="btn btn-primary">Add</a>
+        <a href="#" class="btn btn-primary" id="check" onclick="addToCheckOut(${phones.id})">Add</a>
     </div>
     </div>`
         })
@@ -83,6 +92,15 @@ JSON.parse(localStorage.getItem('products')) : [
     };
 
 displayProduct();
+
+let checkOut = JSON.parse(localStorage.getItem('checkOut'));
+function addToCheckOut(index) {
+    checkOut.push(products[index])
+    
+    localStorage.setItem('checkOut', JSON.stringify(checkOut));
+    
+    
+}
 
 
 
