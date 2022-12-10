@@ -94,12 +94,23 @@ let y = localStorage.getItem('phones');
 displayProduct();
 
 let checkOut = JSON.parse(localStorage.getItem('checkOut'));
-function addToCheckOut(index) {
-    checkOut.push(products[index])
+document.querySelector('#products').innerHTML +=``
+
+function getSingleItem(data, id) {
+    
+}
+ function addToCheckOut(index) {
+   const product = products.find((item) => item.id == index);
+   console.log(product)
+
+
+    // console.log(products[index])
+    checkOut.push(product)
     
     localStorage.setItem('checkOut', JSON.stringify(checkOut));
     
-    
+    // console.log(checkOut);
+    // displayProduct();
 }
 
 

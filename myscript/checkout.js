@@ -65,17 +65,29 @@ JSON.parse(localStorage.getItem('list')) : [
 
     },
 ];
-let checkOut = [];
+// let checkOut = [];
 
-function basket(items) {
-    phones.forEach((items) => {
-        document.querySelector('#tbody').innerHTML +=`
-        <tr>
-        <th scope="row">${items.id}</th>
-        <td>${items.productName}</td>
-        <td>${items.color}</td>
-        <td>${items.price}</td>
-      </tr>`
-    });
+// function basket() {
+//     phones.forEach((items) => {
+//         document.querySelector('#tbody').innerHTML +=`
+//         <tr>
+//         <th scope="row">${items.id}</th>
+//         <td>${items.productName}</td>
+//         <td>${items.color}</td>
+//         <td>${items.price}</td>
+//       </tr>`
+//     });
     
+// }
+
+const cart = JSON.parse(localStorage.getItem('checkOut'))
+
+for(let i = 0; i< cart.length; i++) {
+    document.getElementById('tafula').innerHTML +=`
+        <tr>
+        <th scope="row">${cart[i].id}</th>
+        <td>${cart[i].productName}</td>
+        <td>${cart[i].color}</td>
+        <td>${cart[i].price}</td>
+      </tr>`
 }
